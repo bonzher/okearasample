@@ -476,14 +476,22 @@
     }
     .product-stage::before {
       content:""; position:absolute; inset:0;
-      background: url('assets/product-ritual.webp') center bottom / 76% auto no-repeat;
-      opacity:.32;
-      filter: saturate(.9);
+      background:
+        radial-gradient(circle at 52% 55%, rgba(255,255,255,.74), transparent 17rem),
+        radial-gradient(circle at 22% 78%, rgba(190,218,232,.28), transparent 14rem);
+      opacity:.82;
     }
     .product-stage::after {
       content:""; position:absolute; width: 360px; height: 44px; border-radius:50%; bottom:74px; background: rgba(31,68,91,.12); filter: blur(16px);
     }
-    .product-bottle { position:relative; z-index:3; width: min(64%, 360px); filter: drop-shadow(0 34px 35px rgba(16,45,66,.28)); }
+    .product-bottle {
+      position:relative; z-index:3; width:min(76%, 420px); max-width:100%; max-height: 360px;
+      object-fit:contain; filter: drop-shadow(0 34px 35px rgba(16,45,66,.28));
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .product-stage[data-preview="single"] .product-bottle { width:min(58%, 360px); max-height: 360px; }
+    .product-stage[data-preview="pack"] .product-bottle { width:min(82%, 430px); max-height: 350px; transform: translateY(10px); }
+    .product-stage[data-preview="refill"] .product-bottle { width:min(76%, 420px); max-height: 370px; transform: translateY(4px); }
     .seal {
       position:absolute; right: 58px; top: 74px; width: 126px; height: 126px; border-radius:50%;
       background: rgba(255,255,255,.82); border:1px solid rgba(207,223,231,.95); display:grid; place-items:center; text-align:center; color:var(--navy); text-transform:uppercase; letter-spacing:.16em; font-size: 10px; font-weight:900; line-height:1.35; box-shadow: var(--soft-shadow); z-index:4;
@@ -835,8 +843,8 @@
 
     <section class="product" id="product">
       <div class="wrap product-grid">
-        <div class="product-stage reveal">
-          <img class="product-bottle" src="assets/okeara-product.webp" alt="OKEARA Structured Hydrogen Water 500ml carton" />
+        <div class="product-stage reveal" data-preview="single">
+          <img class="product-bottle" id="productPreview" src="assets/okeara-product.webp" alt="OKEARA Structured Hydrogen Water 500ml carton" />
           <div class="seal">Pure hydration<br/>for cellular<br/>wellness</div>
         </div>
         <div class="product-copy reveal">
@@ -849,10 +857,10 @@
             <div class="feature"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#91aab8"/><path d="M9 19c2.8-5.5 5.7-8.7 10-10" stroke="#14344d" stroke-width="1.5" stroke-linecap="round"/><path d="M10 9c4.5.2 7.2 2.3 9 6.5" stroke="#14344d" stroke-width="1.5" stroke-linecap="round"/></svg>Antioxidant support</div>
             <div class="feature"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#91aab8"/><path d="M8 14h12M10 10h8M10 18h8" stroke="#14344d" stroke-width="1.5" stroke-linecap="round"/></svg>pH balanced & pure</div>
           </div>
-          <div class="buy-box">
-            <label class="option active" data-price="From Rp49.000"><span><i class="radio"></i>One 500ml ritual pack</span><span class="price">From Rp49.000</span></label>
-            <label class="option" data-price="Rp1.176.000"><span><i class="radio"></i>24-pack cellular protocol</span><span class="price">Rp1.176.000</span></label>
-            <label class="option" data-price="Rp450.000"><span><i class="radio"></i>12L home hydration refill</span><span class="price">Rp450.000</span></label>
+          <div class="buy-box" role="radiogroup" aria-label="Choose product option">
+            <label class="option active" role="radio" aria-checked="true" tabindex="0" data-preview="single" data-image="assets/okeara-product.webp" data-alt="OKEARA Structured Hydrogen Water 500ml carton" data-price="From Rp49.000"><span><i class="radio"></i>One 500ml ritual pack</span><span class="price">From Rp49.000</span></label>
+            <label class="option" role="radio" aria-checked="false" tabindex="-1" data-preview="pack" data-image="assets/okeara-24pack.webp" data-alt="OKEARA Structured Hydrogen Water 500ml x 24 pack" data-price="Rp1.176.000"><span><i class="radio"></i>24-pack cellular protocol</span><span class="price">Rp1.176.000</span></label>
+            <label class="option" role="radio" aria-checked="false" tabindex="-1" data-preview="refill" data-image="assets/okeara-12l.webp" data-alt="OKEARA Structured Hydrogen Water 12L home hydration refill" data-price="Rp450.000"><span><i class="radio"></i>12L home hydration refill</span><span class="price">Rp450.000</span></label>
             <div class="buy-footer">
               <div class="current-price" id="priceDisplay">From Rp49.000</div>
               <button class="btn primary" id="addToCart">Add to cart</button>
@@ -998,11 +1006,29 @@
     menuToggle?.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-    document.querySelectorAll('.option').forEach(option => {
-      option.addEventListener('click', () => {
-        document.querySelectorAll('.option').forEach(o => o.classList.remove('active'));
-        option.classList.add('active');
-        priceDisplay.textContent = option.dataset.price;
+    const productStage = document.querySelector('.product-stage');
+    const productPreview = document.getElementById('productPreview');
+    const options = document.querySelectorAll('.option');
+    function selectProductOption(option) {
+      options.forEach(o => {
+        const isActive = o === option;
+        o.classList.toggle('active', isActive);
+        o.setAttribute('aria-checked', isActive ? 'true' : 'false');
+        o.tabIndex = isActive ? 0 : -1;
+      });
+      priceDisplay.textContent = option.dataset.price;
+      if (productPreview && option.dataset.image) {
+        productPreview.src = option.dataset.image;
+        productPreview.alt = option.dataset.alt || '';
+      }
+      if (productStage) productStage.dataset.preview = option.dataset.preview || 'single';
+    }
+    options.forEach(option => {
+      option.addEventListener('click', () => selectProductOption(option));
+      option.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        selectProductOption(option);
       });
     });
 
