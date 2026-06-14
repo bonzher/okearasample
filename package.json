@@ -1,0 +1,12 @@
+{
+  "name": "okeara-web-preview",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "vercel": "^54.13.0"
+  }
+}
