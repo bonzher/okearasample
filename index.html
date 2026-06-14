@@ -130,19 +130,22 @@
     .logo {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 16px;
       color: var(--navy);
-      letter-spacing: .45em;
+      letter-spacing: 0;
       font-size: 24px;
       font-weight: 400;
       line-height: 1;
       white-space: nowrap;
     }
-    .logo em {
+    .logo span:not(.logo-mark) {
+      letter-spacing: .50em;
+    }
+    .logo-mark {
       font-style: normal;
       display:inline-block;
-      letter-spacing:.12em;
-      transform: translateY(-1px);
+      letter-spacing: 0;
+      transform: translateY(-2px);
     }
     .nav-links { display:flex; align-items:center; gap: 28px; }
     .nav-links a {
@@ -619,7 +622,8 @@
     }
     @media (max-width: 820px) {
       .nav { height: 72px; width: min(100% - 32px, 1320px); }
-      .logo { font-size:20px; letter-spacing:.34em; }
+      .logo { font-size:20px; gap: 15px; }
+      .logo span:not(.logo-mark) { letter-spacing:.52em; }
       .nav-links {
         position: fixed; left: 16px; right:16px; top: 78px;
         display: none; flex-direction: column; align-items:flex-start; gap: 0;
@@ -658,7 +662,7 @@
 <body>
   <header class="site-header" id="top">
     <nav class="nav" aria-label="Primary navigation">
-      <a class="logo" href="#home" aria-label="OKEARA home">OK<em>Îž</em>ARA</a>
+      <a class="logo" href="#home" aria-label="OKEARA home"><span>OK</span><span class="logo-mark">&#926;</span><span>ARA</span></a>
       <div class="nav-links" id="navLinks">
         <a class="active" href="#home">Home</a>
         <a href="#protocol">Protocol</a>
@@ -953,7 +957,7 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <a class="logo" href="#home">OK<em>Îž</em>ARA</a>
+          <a class="logo" href="#home"><span>OK</span><span class="logo-mark">&#926;</span><span>ARA</span></a>
           <p>Structured hydration for cellular wellness. Designed by nature. Delivered for you.</p>
         </div>
         <div><h3>Explore</h3><div class="footer-links"><a href="#protocol">Our Science</a><a href="#benefits">Benefits</a><a href="#faq">FAQ</a></div></div>
