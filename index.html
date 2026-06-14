@@ -441,20 +441,16 @@
     .benefit-card { text-align:center; }
     .benefit-media {
       position:relative;
+      aspect-ratio: 1.18/1;
       border-radius: 18px;
       overflow:hidden;
       background:#eef5f7;
       border:1px solid rgba(213,227,234,.9);
       box-shadow: 0 12px 32px rgba(34,73,96,.08);
     }
-    .benefit-media img { width:100%; aspect-ratio: 1.18/1; object-fit: cover; }
+    .benefit-media img { display:block; width:100%; height:100%; object-fit: cover; }
     .benefit-media img.natural-detox-img { object-position: center 16%; }
-    .benefit-media img.recovery-balance-img {
-      width: 128%;
-      max-width: none;
-      object-position: center 58%;
-      transform: translateX(-11%);
-    }
+    .benefit-media img.recovery-balance-img { object-position: center 66%; }
     .benefit-media img.radiant-beauty-img { object-position: center 32%; }
     .benefit-media img.longevity-img { object-position: 34% center; }
     .benefit-card h3 { margin: 18px 0 5px; color:var(--navy); font-size: 16px; font-weight: 560; }
