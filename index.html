@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OKEARA — Daily Ritual Web Preview</title>
+  <link rel="preload" as="image" href="assets/hero-ice.webp" fetchpriority="high" />
   <meta name="description" content="A mockup-inspired OKEARA landing page preview for structured hydrogen water." />
   <style>
     :root {
@@ -665,6 +666,14 @@
       .product-stage { min-height: 380px; }
       .seal { display:none; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -710,7 +719,7 @@
         </div>
         <div class="hero-art reveal show">
           <div class="hero-orb"></div>
-          <img class="hero-ice" src="assets/hero-ice.webp" alt="OKEARA structured hydrogen water carton on ice" />
+          <img class="hero-ice" src="assets/hero-ice.webp" alt="OKEARA structured hydrogen water carton on ice" width="460" height="350" fetchpriority="high" decoding="async" />
           <div class="hero-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-5.1 7-11.4C19 6.3 16 2.7 12 2 8 2.7 5 6.3 5 10.6 5 16.9 12 22 12 22Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Cellular ritual</div>
           <div class="hero-chip">Structured H₂</div>
           <div class="bubbles" aria-hidden="true"><i class="bubble"></i><i class="bubble"></i><i class="bubble"></i><i class="bubble"></i></div>
@@ -727,7 +736,7 @@
         </div>
         <div class="cards-3">
           <article class="pillar-card reveal">
-            <img class="pillar-img" src="assets/pillar-protector.webp" alt="Water bubbles" />
+            <img class="pillar-img" src="assets/pillar-protector.webp" alt="Water bubbles" loading="lazy" decoding="async" />
             <div class="pillar-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.2 8.7-7 10-3.8-1.3-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7"/><path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
             <div class="meta"><span class="num">01</span><h3>The Protector</h3></div>
             <h4>Supplement OKEARA Blue</h4>
@@ -735,7 +744,7 @@
             <a class="learn" href="#product">Learn more →</a>
           </article>
           <article class="pillar-card reveal">
-            <img class="pillar-img" src="assets/pillar-foundation.webp" alt="Structured water ripple" />
+            <img class="pillar-img" src="assets/pillar-foundation.webp" alt="Structured water ripple" loading="lazy" decoding="async" />
             <div class="pillar-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3c4 4.4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 2-6.6 6-11Z" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 14.5c1.5 1.8 3.8 2.3 6 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
             <div class="meta"><span class="num">02</span><h3>The Foundation</h3></div>
             <h4>Pure Structured Water + Hydrogen</h4>
@@ -743,7 +752,7 @@
             <a class="learn" href="#science">Learn more →</a>
           </article>
           <article class="pillar-card reveal">
-            <img class="pillar-img" src="assets/pillar-recharger.webp" alt="Circular water pattern" />
+            <img class="pillar-img" src="assets/pillar-recharger.webp" alt="Circular water pattern" loading="lazy" decoding="async" />
             <div class="pillar-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 20c-2.5-1.4-4-3.6-4-6.4C4 9.2 6.8 6 11 4v8l-3 4h5l-1 6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M16 20c2.5-1.4 4-3.6 4-6.4 0-4.4-2.8-7.6-7-9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
             <div class="meta"><span class="num">03</span><h3>The Recharger</h3></div>
             <h4>Hydrogen Inhalation</h4>
@@ -829,12 +838,12 @@
           <h2>Wellness That Flows Through Every Part of You</h2>
         </div>
         <div class="benefit-row">
-          <article class="benefit-card reveal"><div class="benefit-media"><img src="assets/benefit-deep-hydration-new-color.png" alt="Woman drinking OKEARA after a workout"/></div><h3>Deep Hydration</h3><p>Hydrate at the cellular level for lasting vitality and balance.</p></article>
-          <article class="benefit-card reveal"><div class="benefit-media"><img class="natural-detox-img" src="assets/benefit-natural-detox-new-color.png" alt="Woman touching her face during a calm skincare ritual"/></div><h3>Natural Detox</h3><p>Support your body’s natural detox pathways and cellular renewal.</p></article>
-          <article class="benefit-card reveal"><div class="benefit-media"><img class="recovery-balance-img" src="assets/benefit-recovery-balance-new-color-v2.png" alt="Woman resting with cucumber water after recovery"/></div><h3>Recovery & Balance</h3><p>Reduce inflammation and support recovery from daily stress.</p></article>
-          <article class="benefit-card reveal"><div class="benefit-media"><img class="radiant-beauty-img" src="assets/benefit-radiant-beauty-v2.png" alt="Woman glowing in soft light by water"/></div><h3>Radiant Beauty</h3><p>Hydration that reflects in your skin, energy, and glow.</p></article>
-          <article class="benefit-card reveal"><div class="benefit-media"><img src="assets/benefit-mental-clarity-new-color.png" alt="Woman focused while using a tablet with OKEARA"/></div><h3>Mental Clarity</h3><p>Clearer thoughts, improved focus, inner calm.</p></article>
-          <article class="benefit-card reveal"><div class="benefit-media"><img class="longevity-img" src="assets/benefit-longevity-v2.png" alt="Woman practicing gentle movement by a lake"/></div><h3>Longevity</h3><p>Nourish your cells today for a healthier tomorrow and beyond.</p></article>
+          <article class="benefit-card reveal"><div class="benefit-media"><img src="assets/benefit-deep-hydration-optimized.jpg" alt="Woman drinking OKEARA after a workout" width="960" height="540" loading="lazy" decoding="async"/></div><h3>Deep Hydration</h3><p>Hydrate at the cellular level for lasting vitality and balance.</p></article>
+          <article class="benefit-card reveal"><div class="benefit-media"><img class="natural-detox-img" src="assets/benefit-natural-detox-optimized.jpg" alt="Woman touching her face during a calm skincare ritual" width="1053" height="1100" loading="lazy" decoding="async"/></div><h3>Natural Detox</h3><p>Support your body’s natural detox pathways and cellular renewal.</p></article>
+          <article class="benefit-card reveal"><div class="benefit-media"><img class="recovery-balance-img" src="assets/benefit-recovery-balance-optimized.jpg" alt="Woman resting with cucumber water after recovery" width="990" height="1100" loading="lazy" decoding="async"/></div><h3>Recovery & Balance</h3><p>Reduce inflammation and support recovery from daily stress.</p></article>
+          <article class="benefit-card reveal"><div class="benefit-media"><img class="radiant-beauty-img" src="assets/benefit-radiant-beauty-optimized.jpg" alt="Woman glowing in soft light by water" width="733" height="1100" loading="lazy" decoding="async"/></div><h3>Radiant Beauty</h3><p>Hydration that reflects in your skin, energy, and glow.</p></article>
+          <article class="benefit-card reveal"><div class="benefit-media"><img src="assets/benefit-mental-clarity-optimized.jpg" alt="Woman focused while using a tablet with OKEARA" width="960" height="537" loading="lazy" decoding="async"/></div><h3>Mental Clarity</h3><p>Clearer thoughts, improved focus, inner calm.</p></article>
+          <article class="benefit-card reveal"><div class="benefit-media"><img class="longevity-img" src="assets/benefit-longevity-optimized.jpg" alt="Woman practicing gentle movement by a lake" width="960" height="541" loading="lazy" decoding="async"/></div><h3>Longevity</h3><p>Nourish your cells today for a healthier tomorrow and beyond.</p></article>
         </div>
       </div>
     </section>
@@ -842,7 +851,7 @@
     <section class="product" id="product">
       <div class="wrap product-grid">
         <div class="product-stage reveal" data-preview="single">
-          <img class="product-bottle" id="productPreview" src="assets/okeara-product.webp" alt="OKEARA Structured Hydrogen Water 500ml carton" />
+          <img class="product-bottle" id="productPreview" src="assets/okeara-product.webp" alt="OKEARA Structured Hydrogen Water 500ml carton" loading="lazy" decoding="async" />
           <div class="seal">Pure hydration<br/>for cellular<br/>wellness</div>
         </div>
         <div class="product-copy reveal">
@@ -872,19 +881,19 @@
     <section class="products-lite">
       <div class="wrap product-cards">
         <article class="mini-product reveal">
-          <div class="img-wrap"><img src="assets/okeara-24pack.webp" alt="OKEARA Structured Hydrogen Water 500ml x 24 pack" /></div>
+          <div class="img-wrap"><img src="assets/okeara-24pack.webp" alt="OKEARA Structured Hydrogen Water 500ml x 24 pack" loading="lazy" decoding="async" /></div>
           <h3>500ml x 24 Pack</h3>
           <p>The on-the-go daily hydration protocol for travel, work, training, and cellular renewal.</p>
           <div class="mini-price">Rp1.176.000</div>
         </article>
         <article class="mini-product reveal">
-          <div class="img-wrap"><img src="assets/okeara-12l.webp" alt="OKEARA Structured Hydrogen Water 12L box" /></div>
+          <div class="img-wrap"><img src="assets/okeara-12l.webp" alt="OKEARA Structured Hydrogen Water 12L box" loading="lazy" decoding="async" /></div>
           <h3>12L Home Refill</h3>
           <p>A complete at-home hydration supply for sustained rejuvenation and daily performance.</p>
           <div class="mini-price">Rp450.000</div>
         </article>
         <article class="mini-product reveal">
-          <div class="img-wrap"><img src="assets/okeara-product.webp" alt="OKEARA 500ml carton front view" /></div>
+          <div class="img-wrap"><img src="assets/okeara-product.webp" alt="OKEARA 500ml carton front view" loading="lazy" decoding="async" /></div>
           <h3>500ml Daily Pack</h3>
           <p>Premium structured hydrogen water crafted as a functional wellness tool, not just refreshment.</p>
           <div class="mini-price">From Rp49.000</div>
@@ -906,7 +915,7 @@
           <p class="eyebrow">Beyond the Bottle</p>
           <h2>Packaging for Purity & Planet</h2>
           <p>OKEARA’s multi-layer package is positioned as a protective vault for hydrogen water, designed to block oxygen and light while reducing plastic dependency.</p>
-          <img src="assets/okeara-12l.webp" alt="OKEARA 12L structured hydrogen water box" />
+          <img src="assets/okeara-12l.webp" alt="OKEARA 12L structured hydrogen water box" loading="lazy" decoding="async" />
         </div>
         <div class="layers">
           <div class="layer reveal"><div class="pct">70%</div><div><h3>01. The Structure</h3><p>Paper outer layer provides a durable, recyclable shape derived from renewable resources.</p></div></div>
